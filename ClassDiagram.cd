@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BaseKey">
+    <Position X="1.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAACAAAgAAAAIgAAEAAAAAAAABAAAAiAAABAAA=</HashCode>
+      <FileName>Key.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WhiteKey">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Key.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackKey">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAE=</HashCode>
+      <FileName>Key.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Piano">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAAEEQAAAgAAAAggoAEAAEAAAAABAAAAiAAAACAA=</HashCode>
+      <FileName>Piano.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
