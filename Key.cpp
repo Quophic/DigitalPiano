@@ -10,7 +10,7 @@ BaseKey::BaseKey(int index) :
     keyRc{0, 0, 0, 0}
 {}
 
-void BaseKey::KeyUp()
+void BaseKey::OnKeyUp()
 {
     keyDown = false;
 }

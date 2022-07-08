@@ -32,8 +32,8 @@ public:
 	bool IsHit(POINT* pt);
 	void OnHit(POINT* pt);
 
-	void KeyDown(POINT* pt, HDC hdc);
-	void KeyUp(HDC hdc);
+	void OnKeyDown(POINT* pt, HDC hdc);
+	void OnKeyUp(HDC hdc);
 	// ÇÙ¼üµÄ»æÖÆ
 	void Paint(HDC hdc);
 

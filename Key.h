@@ -23,7 +23,7 @@ public:
 
 	BaseKey(int index);
 
-	void KeyUp();
+	void OnKeyUp();
 
 	void SetKeyRc(POINT* position, LONG width, LONG height);
 	bool IsHit(POINT* pt);

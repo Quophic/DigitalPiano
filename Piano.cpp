@@ -95,7 +95,6 @@ bool Piano::IsHit(POINT* pt)
 
 void Piano::OnHit(POINT* pt)
 {
-	
 	for (int i = 0; i < BK_NUM; i++)
 	{
 		if (bKeyboard[i]->keyDown)
@@ -112,7 +111,7 @@ void Piano::OnHit(POINT* pt)
 	}
 }
 
-void Piano::KeyDown(POINT* pt, HDC hdc)
+void Piano::OnKeyDown(POINT* pt, HDC hdc)
 {
 	bool bkHit = false;
 	// 所有琴键检测鼠标点击
@@ -135,15 +134,15 @@ void Piano::KeyDown(POINT* pt, HDC hdc)
 	OnHit(pt);
 }
 
-void Piano::KeyUp(HDC hdc)
+void Piano::OnKeyUp(HDC hdc)
 {
 	for (int i = 0; i < WK_NUM; i++)
 	{
-		wKeyboard[i]->KeyUp();
+		wKeyboard[i]->OnKeyUp();
 	}
 	for (int i = 0; i < BK_NUM; i++)
 	{
-		bKeyboard[i]->KeyUp();
+		bKeyboard[i]->OnKeyUp();
 	}
 	Paint(hdc);
 }

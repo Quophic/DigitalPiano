@@ -105,7 +105,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         hdc = GetDC(hwnd);
         if (pPiano->IsHit(&pt))
         {
-            pPiano->KeyDown(&pt, hdc);
+            pPiano->OnKeyDown(&pt, hdc);
         }
         ReleaseDC(hwnd, hdc);
         return 0;
@@ -118,7 +118,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         hdc = GetDC(hwnd);
         if (pPiano->IsHit(&pt))
         {
-            pPiano->KeyUp(hdc);
+            pPiano->OnKeyUp(hdc);
         }
         ReleaseDC(hwnd, hdc);
         return 0;
