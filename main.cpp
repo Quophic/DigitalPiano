@@ -10,6 +10,8 @@
 #include "Piano.h"
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+template <typename F>
+void UpdatePiano(HWND hwnd, LPARAM lparam, Piano* pPiano, F const& f);
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
@@ -103,46 +105,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return 0;
 
     case WM_LBUTTONDOWN:        // 鼠标左键按下时
-        // 获取鼠标坐标
-        pt.x = LOWORD(lParam);
-        pt.y = HIWORD(lParam);
-        // 检测鼠标点击并绘制
-        hdc = GetDC(hwnd);
-        GetWindowRect(hwnd, &rc);
-        width = rc.right - rc.left;
-        height = rc.bottom - rc.top;
-        mhdc = CreateCompatibleDC(hdc);
-        mbm = CreateCompatibleBitmap(hdc, width, height);
-        SelectObject(mhdc, mbm);
-        if (pPiano->IsHit(&pt))
-        {
-            pPiano->OnKeyDown(&pt, mhdc);
-        }
-        BitBlt(hdc, 0, 0, width, height, mhdc, 0, 0, SRCCOPY);
-        DeleteDC(mhdc);
-        DeleteObject(mbm);
-        ReleaseDC(hwnd, hdc);
+        UpdatePiano(hwnd, lParam, pPiano, [pPiano](LPPOINT pt, HDC hdc) {pPiano->OnKeyDown(pt, hdc); });
         return 0;
 
     case WM_LBUTTONUP:          // 鼠标左键松开时
-        pt.x = LOWORD(lParam);
-        pt.y = HIWORD(lParam);
-        // 检测鼠标点击并绘制
-        hdc = GetDC(hwnd);
-        GetWindowRect(hwnd, &rc);
-        width = rc.right - rc.left;
-        height = rc.bottom - rc.top;
-        mhdc = CreateCompatibleDC(hdc);
-        mbm = CreateCompatibleBitmap(hdc, width, height);
-        SelectObject(mhdc, mbm);
-        if (pPiano->IsHit(&pt))
-        {
-            pPiano->OnKeyUp(mhdc);
-        }
-        BitBlt(hdc, 0, 0, width, height, mhdc, 0, 0, SRCCOPY);
-        DeleteDC(mhdc);
-        DeleteObject(mbm);
-        ReleaseDC(hwnd, hdc);
+        UpdatePiano(hwnd, lParam, pPiano, [pPiano](LPPOINT pt, HDC hdc) {pPiano->OnKeyUp(hdc); });
         return 0;
 
     case WM_PAINT:              // 窗口重新绘制的消息
@@ -156,4 +123,35 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     }
     return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+
+// 使用缓冲绘制
+template <typename F>
+void UpdatePiano(HWND hwnd, LPARAM lParam, Piano* pPiano, F const& func)
+{
+    POINT pt;
+    HDC hdc, mhdc;
+    RECT rc;
+    HBITMAP mbm;
+    int width, height;
+    // 获取鼠标坐标
+    pt.x = LOWORD(lParam);
+    pt.y = HIWORD(lParam);
+    if (pPiano->IsHit(&pt))
+    {
+        hdc = GetDC(hwnd);
+        GetWindowRect(hwnd, &rc);
+        width = rc.right - rc.left;
+        height = rc.bottom - rc.top;
+        mhdc = CreateCompatibleDC(hdc);
+        mbm = CreateCompatibleBitmap(hdc, width, height);
+        SelectObject(mhdc, mbm);
+
+        func(&pt, mhdc);
+        
+        BitBlt(hdc, 0, 0, width, height, mhdc, 0, 0, SRCCOPY);
+        DeleteDC(mhdc);
+        DeleteObject(mbm);
+        ReleaseDC(hwnd, hdc);
+    }
 }
