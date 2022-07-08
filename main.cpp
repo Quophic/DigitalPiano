@@ -6,7 +6,7 @@
 #include <iostream>
 #pragma comment (lib, "winmm.lib")
 
-#include "Key.h"
+//#include "Key.h"
 #include "Piano.h"
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -103,13 +103,23 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         pt.y = HIWORD(lParam);
         // 检测鼠标点击并绘制
         hdc = GetDC(hwnd);
-        pPiano->KeyDown(&pt, hdc);
+        if (pPiano->IsHit(&pt))
+        {
+            pPiano->KeyDown(&pt, hdc);
+        }
         ReleaseDC(hwnd, hdc);
         return 0;
 
     case WM_LBUTTONUP:          // 鼠标左键松开时
+        // 获取鼠标坐标
+        pt.x = LOWORD(lParam);
+        pt.y = HIWORD(lParam);
+
         hdc = GetDC(hwnd);
-        pPiano->KeyUp(hdc);
+        if (pPiano->IsHit(&pt))
+        {
+            pPiano->KeyUp(hdc);
+        }
         ReleaseDC(hwnd, hdc);
         return 0;
 
@@ -118,7 +128,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         hdc = BeginPaint(hwnd, &ps);
         // 窗口变化
         pPiano->SetSize(&ps.rcPaint);
-        pPiano->OnPaint(hdc);
+        pPiano->Paint(hdc);
         EndPaint(hwnd, &ps);
         return 0;
 

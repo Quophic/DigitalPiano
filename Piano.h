@@ -35,7 +35,7 @@ public:
 	void KeyDown(POINT* pt, HDC hdc);
 	void KeyUp(HDC hdc);
 	// ÇÙ¼üµÄ»æÖÆ
-	void OnPaint(HDC hdc);
+	void Paint(HDC hdc);
 
 };
 

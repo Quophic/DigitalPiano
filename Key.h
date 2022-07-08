@@ -13,36 +13,40 @@ class BaseKey
 {
 protected:
 	int index;							// keysound 文件夹黑白键声音文件索引
+	virtual void PlayKeySound() = 0;
 
 public:
 	//static const LONG KEY_RATIO;		// 琴键的长宽比
-
+		
 	RECT keyRc;							// 琴键在窗口中所占区域
 	bool keyDown;						// 琴键是否被按下
 
 	BaseKey(int index);
 
-	void KeyDown(POINT* pt, HDC hdc, HBRUSH hbr);
 	void KeyUp();
 
 	void SetKeyRc(POINT* position, LONG width, LONG height);
 	bool IsHit(POINT* pt);
 	// 敲击琴键发声 每个键都不同
-	virtual void OnHit() = 0;
+	void OnHit();
 	// 这个方法需要piano类传给他笔刷
-	void OnPaint(HDC hdc, HBRUSH hbr);
+	void Paint(HDC hdc, HBRUSH hbr);
 };
 
 class WhiteKey : public BaseKey
 {
+private:
+	void PlayKeySound();
 public:
 	WhiteKey(int index);
-	void OnHit();
+
 };
 
 class BlackKey : public BaseKey
 {
+private:
+	void PlayKeySound();
 public:
 	BlackKey(int index);
-	void OnHit();
+
 };

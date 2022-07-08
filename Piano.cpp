@@ -114,11 +114,6 @@ void Piano::OnHit(POINT* pt)
 
 void Piano::KeyDown(POINT* pt, HDC hdc)
 {
-	if (!IsHit(pt))
-	{
-		return;
-	}
-	
 	bool bkHit = false;
 	// 所有琴键检测鼠标点击
 	for (int i = 0; i < BK_NUM; i++)
@@ -126,6 +121,7 @@ void Piano::KeyDown(POINT* pt, HDC hdc)
 		if (bKeyboard[i]->IsHit(pt))
 		{
 			bkHit = true;
+			break;
 		}
 	}
 	// 黑键在白键上面， 点击黑键就不触发白键了 
@@ -135,7 +131,7 @@ void Piano::KeyDown(POINT* pt, HDC hdc)
 			wKeyboard[i]->IsHit(pt);
 		}
 	}
-	OnPaint(hdc);
+	Paint(hdc);
 	OnHit(pt);
 }
 
@@ -149,31 +145,31 @@ void Piano::KeyUp(HDC hdc)
 	{
 		bKeyboard[i]->KeyUp();
 	}
-	OnPaint(hdc);
+	Paint(hdc);
 }
 
-void Piano::OnPaint(HDC hdc)
+void Piano::Paint(HDC hdc)
 {
 	for (int i = 0; i < WK_NUM; i++)
 	{
 		if (wKeyboard[i]->keyDown)
 		{
-			wKeyboard[i]->OnPaint(hdc, WKHChbr);
+			wKeyboard[i]->Paint(hdc, WKHChbr);
 		}
 		else
 		{
-			wKeyboard[i]->OnPaint(hdc, WKChbr);
+			wKeyboard[i]->Paint(hdc, WKChbr);
 		}
 	}
 	for (int i = 0; i < BK_NUM; i++)
 	{
 		if (bKeyboard[i]->keyDown)
 		{
-			bKeyboard[i]->OnPaint(hdc, BKHChbr);
+			bKeyboard[i]->Paint(hdc, BKHChbr);
 		}
 		else
 		{
-			bKeyboard[i]->OnPaint(hdc, BKChbr);
+			bKeyboard[i]->Paint(hdc, BKChbr);
 		}
 	}
 }
