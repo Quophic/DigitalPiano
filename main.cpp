@@ -73,6 +73,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     Piano* pPiano;
     HDC hdc;
     POINT pt;
+    HDC mhdc;
+    HBITMAP mbm;
+    RECT rc;
+    int width;
+    int height;
 
     if (uMsg == WM_CREATE || uMsg == WM_NCCREATE)
     {
@@ -103,23 +108,40 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         pt.y = HIWORD(lParam);
         // 检测鼠标点击并绘制
         hdc = GetDC(hwnd);
+        GetWindowRect(hwnd, &rc);
+        width = rc.right - rc.left;
+        height = rc.bottom - rc.top;
+        mhdc = CreateCompatibleDC(hdc);
+        mbm = CreateCompatibleBitmap(hdc, width, height);
+        SelectObject(mhdc, mbm);
         if (pPiano->IsHit(&pt))
         {
-            pPiano->OnKeyDown(&pt, hdc);
+            pPiano->OnKeyDown(&pt, mhdc);
         }
+        BitBlt(hdc, 0, 0, width, height, mhdc, 0, 0, SRCCOPY);
+        DeleteDC(mhdc);
+        DeleteObject(mbm);
         ReleaseDC(hwnd, hdc);
         return 0;
 
     case WM_LBUTTONUP:          // 鼠标左键松开时
-        // 获取鼠标坐标
         pt.x = LOWORD(lParam);
         pt.y = HIWORD(lParam);
-
+        // 检测鼠标点击并绘制
         hdc = GetDC(hwnd);
+        GetWindowRect(hwnd, &rc);
+        width = rc.right - rc.left;
+        height = rc.bottom - rc.top;
+        mhdc = CreateCompatibleDC(hdc);
+        mbm = CreateCompatibleBitmap(hdc, width, height);
+        SelectObject(mhdc, mbm);
         if (pPiano->IsHit(&pt))
         {
-            pPiano->OnKeyUp(hdc);
+            pPiano->OnKeyUp(mhdc);
         }
+        BitBlt(hdc, 0, 0, width, height, mhdc, 0, 0, SRCCOPY);
+        DeleteDC(mhdc);
+        DeleteObject(mbm);
         ReleaseDC(hwnd, hdc);
         return 0;
 
