@@ -146,6 +146,7 @@ void UpdatePiano(HWND hwnd, LPARAM lParam, Piano* pPiano, F const& func)
         mhdc = CreateCompatibleDC(hdc);
         mbm = CreateCompatibleBitmap(hdc, width, height);
         SelectObject(mhdc, mbm);
+        BitBlt(mhdc, 0, 0, width, height, hdc, 0, 0, SRCCOPY);
 
         func(&pt, mhdc);
         
