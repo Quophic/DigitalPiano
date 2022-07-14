@@ -9,6 +9,20 @@
 //#include "Key.h"
 #include "Piano.h"
 
+
+// 启动音乐 
+#define BEAT size_t(500)
+Note startNotes[]{
+    {34, BEAT * 2},
+    {33, BEAT * 2},
+    {32, BEAT * 2},
+    {31, BEAT * 2},
+    {30, BEAT * 2},
+    {29, BEAT * 2},
+    {30, BEAT * 2},
+    {31, BEAT * 2}
+};
+
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 template <typename F>
 void UpdatePiano(HWND hwnd, LPARAM lparam, Piano* pPiano, F const& f);
@@ -58,7 +72,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
     ShowWindow(hwnd, nCmdShow);
 
-
+    piano.AutoPlay(startNotes, sizeof(startNotes) / sizeof(Note));
     // Run the message loop.
 
     MSG msg = { };
@@ -101,7 +115,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return 0;
 
     case WM_LBUTTONDOWN:        // 鼠标左键按下时
-        UpdatePiano(hwnd, lParam, pPiano, [pPiano](LPPOINT pt, HDC hdc) {pPiano->OnKeyDown(pt, hdc); });
+        UpdatePiano(hwnd, lParam, pPiano, [pPiano](LPPOINT pt, HDC hdc) {pPiano->OnHit(pt, hdc); });
         return 0;
 
     case WM_LBUTTONUP:          // 鼠标左键松开时

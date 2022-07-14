@@ -21,14 +21,15 @@ public:
 	bool keyDown;						// 琴键是否被按下
 
 	BaseKey(int index);
-	virtual void PlayKeySound() = 0;
+	virtual void StartPlaySound() = 0;
+	virtual void StopPlaySound() = 0;
 
+	void OnKeyDown();
 	void OnKeyUp();
 
 	void SetKeyRc(POINT* position, LONG width, LONG height);
 	bool IsHit(POINT* pt);
 	// 敲击琴键发声 每个键都不同
-	void OnHit();
 	// 这个方法需要piano类传给他笔刷
 	void Paint(HDC hdc, HBRUSH hbr);
 };
@@ -37,7 +38,8 @@ class WhiteKey : public BaseKey
 {
 private:
 public:
-	void PlayKeySound();
+	void StartPlaySound();
+	void StopPlaySound();
 	WhiteKey(int index);
 
 };
@@ -46,7 +48,8 @@ class BlackKey : public BaseKey
 {
 private:
 public:
-	void PlayKeySound();
+	void StartPlaySound();
+	void StopPlaySound();
 	BlackKey(int index);
 
 };

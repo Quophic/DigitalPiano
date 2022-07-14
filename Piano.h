@@ -38,11 +38,13 @@ public:
 	void SetSize(RECT* area);
 	// 分级处理点击
 	bool IsHit(POINT* pt);
-	void OnHit(POINT* pt);
-	void HitWK(size_t idx);
-	void HitBK(size_t idx);
+	void OnKeyDown();
+	void OnWKDown(size_t idx);
+	void OnWKUp(size_t idx);
+	void OnBKDown(size_t idx);
+	void OnBKUp(size_t idx);
 
-	void OnKeyDown(POINT* pt, HDC hdc);
+	void OnHit(POINT* pt, HDC hdc);
 	void OnKeyUp(HDC hdc);
 	// 琴键的绘制
 	void Paint(HDC hdc);

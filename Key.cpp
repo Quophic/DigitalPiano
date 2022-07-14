@@ -13,6 +13,7 @@ BaseKey::BaseKey(int index) :
 void BaseKey::OnKeyUp()
 {
     keyDown = false;
+    StopPlaySound();
 }
 
 void BaseKey::SetKeyRc(POINT* position, LONG width, LONG height)
@@ -33,9 +34,9 @@ bool BaseKey::IsHit(POINT* pt)
     return keyDown;
 }
 
-void BaseKey::OnHit()
+void BaseKey::OnKeyDown()
 {
-    PlayKeySound();
+    StartPlaySound();
 }
 
 void BaseKey::Paint(HDC hdc, HBRUSH hbr)
@@ -50,15 +51,19 @@ WhiteKey::WhiteKey(int idx) : BaseKey(idx)
     mciSendString(cmd, NULL, 0, NULL);
 }
 
-void WhiteKey::PlayKeySound()
+void WhiteKey::StartPlaySound()
 {
     WCHAR cmd[128];
-    swprintf_s(cmd, 128, L"seek wk%d to start", index);
-    mciSendString(cmd, NULL, 0, NULL);
     swprintf_s(cmd, 128, L"play wk%d", index);
     mciSendString(cmd, NULL, 0, NULL);
 }
 
+void WhiteKey::StopPlaySound()
+{
+    WCHAR cmd[128];
+    swprintf_s(cmd, 128, L"seek wk%d to start", index);
+    mciSendString(cmd, NULL, 0, NULL);
+}
 
 BlackKey::BlackKey(int idx) : BaseKey(idx) 
 {
@@ -67,11 +72,16 @@ BlackKey::BlackKey(int idx) : BaseKey(idx)
     mciSendString(cmd, NULL, 0, NULL);
 }
 
-void BlackKey::PlayKeySound()
+void BlackKey::StartPlaySound()
+{
+    WCHAR cmd[128];
+    swprintf_s(cmd, 128, L"play wk%d", index);
+    mciSendString(cmd, NULL, 0, NULL);
+}
+
+void BlackKey::StopPlaySound()
 {
     WCHAR cmd[128];
     swprintf_s(cmd, 128, L"seek wk%d to start", index);
-    mciSendString(cmd, NULL, 0, NULL);
-    swprintf_s(cmd, 128, L"play wk%d", index);
     mciSendString(cmd, NULL, 0, NULL);
 }

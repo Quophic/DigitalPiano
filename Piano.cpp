@@ -94,35 +94,45 @@ bool Piano::IsHit(POINT* pt)
 	return false;
 }
 
-void Piano::OnHit(POINT* pt)
+void Piano::OnKeyDown()
 {
 	for (int i = 0; i < BK_NUM; i++)
 	{
 		if (bKeyboard[i]->keyDown)
 		{
-			bKeyboard[i]->OnHit();
+			bKeyboard[i]->OnKeyDown();
 		}
 	}
 	for (int i = 0; i < WK_NUM; i++)
 	{
 		if (wKeyboard[i]->keyDown)
 		{
-			wKeyboard[i]->OnHit();
+			wKeyboard[i]->OnKeyDown();
 		}
 	}
 }
 
-void Piano::HitWK(size_t idex)
+void Piano::OnWKDown(size_t idx)
 {
-	wKeyboard[idex % WK_NUM]->PlayKeySound();
+	wKeyboard[idx % WK_NUM]->StartPlaySound();
 }
 
-void Piano::HitBK(size_t idex)
+void Piano::OnWKUp(size_t idx)
 {
-	bKeyboard[idex % BK_NUM]->PlayKeySound();
+	wKeyboard[idx % WK_NUM]->StopPlaySound();
 }
 
-void Piano::OnKeyDown(POINT* pt, HDC hdc)
+void Piano::OnBKDown(size_t idx)
+{
+	bKeyboard[idx % BK_NUM]->StartPlaySound();
+}
+
+void Piano::OnBKUp(size_t idx)
+{
+	bKeyboard[idx % BK_NUM]->StopPlaySound();
+}
+
+void Piano::OnHit(POINT* pt, HDC hdc)
 {
 	bool bkHit = false;
 	// 所有琴键检测鼠标点击
@@ -142,7 +152,7 @@ void Piano::OnKeyDown(POINT* pt, HDC hdc)
 		}
 	}
 	Paint(hdc);
-	OnHit(pt);
+	OnKeyDown();
 }
 
 void Piano::OnKeyUp(HDC hdc)
@@ -197,13 +207,16 @@ void Piano::NoteProc(PNote notes, size_t n)
 		idx = notes[i].keyIdx;
 		if (idx & (1 << 6))
 		{
-			HitBK(idx - (1 << 6));
+			OnBKDown(idx - (1 << 6));
+			Sleep(notes[i].delay);
+			OnBKUp(idx - (1 << 6));
 		}
 		else
 		{
-			HitWK(idx);
+			OnWKDown(idx);
+			Sleep(notes[i].delay);
+			OnWKUp(idx);
 		}
-		Sleep(notes[i].delay);
 	}
 }
 
