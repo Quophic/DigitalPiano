@@ -6,6 +6,13 @@
 #define WK_NUM 52
 #define BK_NUM 36
 
+typedef struct
+{
+	UINT8	keyIdx;		// 0保留/0区分黑白键/000000建索引
+	size_t	delay;		// 与下一个音的间隔时间 毫秒
+} Note, * PNote;
+
+
 class Piano
 {
 private:
@@ -21,6 +28,7 @@ private:
 	// 这个数组表示那个位置有黑键
 	bool bk[WK_NUM - 1];
 
+	void NoteProc(PNote notes, size_t n);
 public:
 	Piano();
 	Piano(RECT* area);
@@ -31,11 +39,16 @@ public:
 	// 分级处理点击
 	bool IsHit(POINT* pt);
 	void OnHit(POINT* pt);
+	void HitWK(size_t idx);
+	void HitBK(size_t idx);
 
 	void OnKeyDown(POINT* pt, HDC hdc);
 	void OnKeyUp(HDC hdc);
 	// 琴键的绘制
 	void Paint(HDC hdc);
 
+	void AutoPlay(PNote notes, size_t n);
+
 };
+
 

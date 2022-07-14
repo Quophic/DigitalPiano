@@ -1,6 +1,7 @@
 #include "Piano.h"
 #include "Key.h"
 #include <windows.h>
+#include <thread>
 
 Piano::Piano() :
 	WKChbr(CreateSolidBrush(WK_COLOR)),
@@ -111,6 +112,16 @@ void Piano::OnHit(POINT* pt)
 	}
 }
 
+void Piano::HitWK(size_t idex)
+{
+	wKeyboard[idex % WK_NUM]->PlayKeySound();
+}
+
+void Piano::HitBK(size_t idex)
+{
+	bKeyboard[idex % BK_NUM]->PlayKeySound();
+}
+
 void Piano::OnKeyDown(POINT* pt, HDC hdc)
 {
 	bool bkHit = false;
@@ -171,4 +182,32 @@ void Piano::Paint(HDC hdc)
 			bKeyboard[i]->Paint(hdc, BKChbr);
 		}
 	}
+}
+
+void Piano::NoteProc(PNote notes, size_t n) 
+{
+	UINT8 idx;
+	if (notes == NULL || n == 0)
+	{
+		return;
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		idx = notes[i].keyIdx;
+		if (idx & (1 << 6))
+		{
+			HitBK(idx - (1 << 6));
+		}
+		else
+		{
+			HitWK(idx);
+		}
+		Sleep(notes[i].delay);
+	}
+}
+
+void Piano::AutoPlay(PNote notes, size_t n)
+{
+	NoteProc(notes, n);
 }

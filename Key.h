@@ -13,7 +13,6 @@ class BaseKey
 {
 protected:
 	int index;							// keysound 文件夹黑白键声音文件索引
-	virtual void PlayKeySound() = 0;
 
 public:
 	//static const LONG KEY_RATIO;		// 琴键的长宽比
@@ -22,6 +21,7 @@ public:
 	bool keyDown;						// 琴键是否被按下
 
 	BaseKey(int index);
+	virtual void PlayKeySound() = 0;
 
 	void OnKeyUp();
 
@@ -36,8 +36,8 @@ public:
 class WhiteKey : public BaseKey
 {
 private:
-	void PlayKeySound();
 public:
+	void PlayKeySound();
 	WhiteKey(int index);
 
 };
@@ -45,8 +45,8 @@ public:
 class BlackKey : public BaseKey
 {
 private:
-	void PlayKeySound();
 public:
+	void PlayKeySound();
 	BlackKey(int index);
 
 };

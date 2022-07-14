@@ -58,6 +58,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
     ShowWindow(hwnd, nCmdShow);
 
+
     // Run the message loop.
 
     MSG msg = { };
@@ -144,7 +145,7 @@ void UpdatePiano(HWND hwnd, LPARAM lParam, Piano* pPiano, F const& func)
         BitBlt(mhdc, 0, 0, width, height, hdc, 0, 0, SRCCOPY);
 
         func(&pt, mhdc);
-        
+
         BitBlt(hdc, 0, 0, width, height, mhdc, 0, 0, SRCCOPY);
         DeleteDC(mhdc);
         DeleteObject(mbm);
