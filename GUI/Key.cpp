@@ -47,7 +47,7 @@ void BaseKey::Paint(HDC hdc, HBRUSH hbr)
 WhiteKey::WhiteKey(int idx) : BaseKey(idx)
 {
     WCHAR cmd[128];
-    swprintf_s(cmd, 128, L"open ./KeySound/wk%d.wav alias wk%d", index, index);
+    swprintf_s(cmd, 128, L"open ../KeySound/wk%d.wav alias wk%d", index, index);
     mciSendString(cmd, NULL, 0, NULL);
 }
 
@@ -68,7 +68,7 @@ void WhiteKey::StopPlaySound()
 BlackKey::BlackKey(int idx) : BaseKey(idx) 
 {
     WCHAR cmd[128];
-    swprintf_s(cmd, 128, L"open ./KeySound/bk%d.wav alias bk%d", index, index);
+    swprintf_s(cmd, 128, L"open ../KeySound/bk%d.wav alias bk%d", index, index);
     mciSendString(cmd, NULL, 0, NULL);
 }
 

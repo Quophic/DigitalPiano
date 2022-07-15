@@ -89,7 +89,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     Piano* pPiano;
     HDC hdc;
-    POINT pt;
 
     if (uMsg == WM_CREATE || uMsg == WM_NCCREATE)
     {
