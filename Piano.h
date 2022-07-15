@@ -36,7 +36,7 @@ public:
 
 	// 响应窗口变化 不会填充整个区域
 	void SetSize(RECT* area);
-	// 分级处理点击
+	// 处理点击
 	bool IsHit(POINT* pt);
 	void OnKeyDown();
 	void OnWKDown(size_t idx);
