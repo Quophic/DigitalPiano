@@ -13,10 +13,287 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="资源文件\KeySound">
+      <UniqueIdentifier>{7bd67918-c72b-4bcc-96e8-91dc1aa4f913}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Piano.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Piano.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\KeySound\bk1.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk2.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk3.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk4.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk5.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk6.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk7.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk8.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk9.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk10.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk11.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk12.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk13.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk14.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk15.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk16.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk17.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk18.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk19.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk20.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk21.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk22.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk23.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk24.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk25.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk26.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk27.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk28.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk29.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk30.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk31.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk32.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk33.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk34.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk35.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\bk36.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\pk1.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk2.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk3.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk4.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk5.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk6.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk7.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk8.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk9.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk10.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk11.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk12.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk13.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk14.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk15.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk16.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk17.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk18.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk19.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk20.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk21.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk22.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk23.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk24.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk25.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk26.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk27.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk28.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk29.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk30.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk31.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk32.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk33.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk34.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk35.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk36.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk37.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk38.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk39.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk40.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk41.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk42.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk43.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk44.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk45.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk46.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk47.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk48.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk49.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk50.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk51.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
+    <Media Include="..\KeySound\wk52.wav">
+      <Filter>资源文件\KeySound</Filter>
+    </Media>
   </ItemGroup>
 </Project>
